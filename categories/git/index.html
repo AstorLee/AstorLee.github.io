@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="标签: webpack, 知">
+    <meta name="keywords" content="分类: git, 知">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>标签: webpack | 知</title>
+    <title>分类: git | 知</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -350,55 +350,63 @@
 
     
 
-<div id="tags" class="container chip-container">
+<div id="category-cloud" class="container chip-container">
     <div class="card">
         <div class="card-content">
             <div class="tag-title center-align">
-                <i class="fas fa-tags"></i>&nbsp;&nbsp;文章标签
+                <i class="fas fa-bookmark"></i>&nbsp;&nbsp;文章分类
             </div>
             <div class="tag-chips">
                 
                 
-                <a href="/tags/git/" title="git: 2">
+                
+                <a href="/categories/git/" title="git: 2">
                     <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="git" style="background-color: #F9EBEA;">git
+                             chip-active "
+                            style="background-color: #F9EBEA;">git
                         <span class="tag-length">2</span>
                     </span>
                 </a>
                 
                 
-                <a href="/tags/webpack/" title="webpack: 1">
+                <a href="/categories/webpack/" title="webpack: 1">
                     <span class="chip center-align waves-effect waves-light
-                             chip-active "
-                            data-tagname="webpack" style="background-color: #F5EEF8;">webpack
+                             chip-default "
+                            style="background-color: #F5EEF8;">webpack
                         <span class="tag-length">1</span>
                     </span>
                 </a>
+                
                 
             </div>
         </div>
     </div>
 </div>
 
+
     
 
     <article id="articles" class="container articles">
         <div class="row tags-posts">
             
-            
-            <div class="article tag-post col s12 m6 l4" data-tags="webpack" data-aos="fade-up">
+            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/webpack%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/">
+                    <a href="/%E4%BD%BF%E7%94%A8git%E6%97%B6%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/">
                         <div class="card-image tag-image">
                             
                             
-                            <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="webpack基本配置">
+                            <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="使用git时遇到的一些问题">
                             
-                            <span class="card-title">webpack基本配置</span>
+                            <span class="card-title">使用git时遇到的一些问题</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                合并代码后没有被改动的文件​        git工作流就是如此，不管是 merge 还是 pull 只要没有冲突文件就不会出现被改变的文件。遇到这种情况直接 push 就完事
+
+                            
+                        </div>
                         <div class="publish-info">
                             <span class="publish-date">
                                 <i class="far fa-clock fa-fw icon-date"></i>2020-08-11
@@ -407,14 +415,75 @@
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/webpack/" class="post-category">
-                                webpack
+                                <a href="/categories/git/" class="post-category">
+                                    git
                                 </a>
                                 
                                 
                             </span>
                         </div>
                     </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/git/">
+                            <span class="chip bg-color">git</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/git/">
+                        <div class="card-image tag-image">
+                            
+                            
+                            <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="git基本操作命令小全">
+                            
+                            <span class="card-title">git基本操作命令小全</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                基础操作
+git add .
+. 把所有改动文件提交到暂存区。另外可以直接指定某个文件夹或者文件提交
+
+git commit -m ‘备注’
+最常见的用法，把暂存区的文件提交到本地版本库。-m 参数代表后面输入提交备注，如果不加 -m 会进
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-11
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/git/" class="post-category">
+                                    git
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/git/">
+                            <span class="chip bg-color">git</span>
+                        </a>
+                        
+                    </div>
+                    
                 </div>
             </div>
             
