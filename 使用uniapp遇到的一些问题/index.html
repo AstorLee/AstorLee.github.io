@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="常用插件合集, 博客">
+    <meta name="keywords" content="使用uniapp遇到的一些问题, 博客">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>常用插件合集 | 博客</title>
+    <title>使用uniapp遇到的一些问题 | 博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -308,12 +308,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">常用插件合集</h1>
+                    <h1 class="description center-align post-title">使用uniapp遇到的一些问题</h1>
                 </div>
             </div>
         </div>
@@ -430,8 +430,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%8F%92%E4%BB%B6/">
-                                <span class="chip bg-color">插件</span>
+                            <a href="/tags/uniapp/">
+                                <span class="chip bg-color">uniapp</span>
                             </a>
                         
                     </div>
@@ -442,8 +442,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%8F%92%E4%BB%B6/" class="post-category">
-                                插件
+                            <a href="/categories/uniapp/" class="post-category">
+                                uniapp
                             </a>
                         
                     </div>
@@ -455,7 +455,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-08-12
+                    2020-08-17
                 </div>
                 
 
@@ -471,16 +471,21 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="concurrently"><a href="#concurrently" class="headerlink" title="concurrently"></a>concurrently</h4><p>当我们需要同时启动多个服务并且想要服务按循序跑起时可以用 <strong>concurrently</strong></p>
-<pre><code class="shell">npm install concurrently -S</code></pre>
-<p>使用方法：</p>
-<p>concurrently service servicce</p>
-<p>“concurrently \“nodemon –watch vue.config.js –exec npm run serve\“ \“electron .\“”</p>
-<p>需要注意的是每端命令都需要使用双引号包起来并且需要使用 \ 转义双引号</p>
-<h4 id="nodemon"><a href="#nodemon" class="headerlink" title="nodemon"></a>nodemon</h4><p>nodejs自动重启工具</p>
-<p>这个应该就不用多说了，有用过nodejs开发项目肯定都会很烦每次修改后都要重启服务，用了这个插件后可以让我们成为编程语言的主人（狗头）。</p>
-<pre><code class="shell">npm install nodemon -S</code></pre>
-<p>使用也很简单，nodemon app.js 就完事</p>
+                <h4 id="动态style没法解析"><a href="#动态style没法解析" class="headerlink" title="动态style没法解析"></a>动态style没法解析</h4><p><img src="http://img.phare.xyz/image-20200817124711705.png" alt="动态style没法解析"></p>
+<pre><code class="javascript">&lt;view class=&quot;container&quot; :style=&quot;temp&quot;&gt;
+
+temp = &amp;#123;
+  width: &#39;777px&#39;,
+  height: &#39;500px&#39;
+&amp;#125;</code></pre>
+<p>uniapp不会解析这种形式的对象，可以直接把style写在style属性里或者或像下面这样</p>
+<pre><code class="javascript">&lt;view class=&quot;container&quot; :style=&quot;[temp]&quot;&gt;
+&lt;view class=&quot;container&quot; :style=&quot;&amp;#123;width: 330px&amp;#125;&quot;&gt;
+
+temp = &amp;#123;
+  width: &#39;777px&#39;,
+  height: &#39;500px&#39;
+&amp;#125;</code></pre>
 
             </div>
             <hr/>
@@ -506,7 +511,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://blog.phare.xyz/%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%90%88%E9%9B%86/">https://blog.phare.xyz/%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%90%88%E9%9B%86/</a>
+                    <a href="https://blog.phare.xyz/%E4%BD%BF%E7%94%A8uniapp%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/">https://blog.phare.xyz/%E4%BD%BF%E7%94%A8uniapp%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -544,8 +549,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%8F%92%E4%BB%B6/">
-                                    <span class="chip bg-color">插件</span>
+                                <a href="/tags/uniapp/">
+                                    <span class="chip bg-color">uniapp</span>
                                 </a>
                             
                         </div>
@@ -587,9 +592,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/%E4%BD%BF%E7%94%A8uniapp%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/">
                     <div class="card-image">
@@ -611,9 +617,9 @@ temp = &amp;#123;
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-08-17
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-17
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -626,6 +632,7 @@ temp = &amp;#123;
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -644,32 +651,35 @@ temp = &amp;#123;
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/%E4%BD%BF%E7%94%A8git%E6%97%B6%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/">
+                <a href="/%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%90%88%E9%9B%86/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="使用git时遇到的一些问题">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="常用插件合集">
                         
-                        <span class="card-title">使用git时遇到的一些问题</span>
+                        <span class="card-title">常用插件合集</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            合并代码后没有被改动的文件​        git工作流就是如此，不管是 merge 还是 pull 只要没有冲突文件就不会出现被改变的文件。遇到这种情况直接 push 就完事
-
+                            concurrently当我们需要同时启动多个服务并且想要服务按循序跑起时可以用 concurrently
+npm install concurrently -S
+使用方法：
+concurrently service servicce
+“c
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-11
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-12
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/git/" class="post-category">
-                                    git
+                            <a href="/categories/%E6%8F%92%E4%BB%B6/" class="post-category">
+                                    插件
                                 </a>
                             
                             
@@ -679,8 +689,8 @@ temp = &amp;#123;
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/git/">
-                        <span class="chip bg-color">git</span>
+                    <a href="/tags/%E6%8F%92%E4%BB%B6/">
+                        <span class="chip bg-color">插件</span>
                     </a>
                     
                 </div>

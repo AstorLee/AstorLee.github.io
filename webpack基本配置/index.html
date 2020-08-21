@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="webpack基本配置, 当前">
+    <meta name="keywords" content="webpack基本配置, 博客">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>webpack基本配置 | 当前</title>
+    <title>webpack基本配置 | 博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -41,7 +41,7 @@
                     
                     <img src="/medias/logo.png" class="logo-img" alt="LOGO">
                     
-                    <span class="logo-span">当前</span>
+                    <span class="logo-span">博客</span>
                 </a>
             </div>
             
@@ -140,7 +140,7 @@
         
         <img src="/medias/logo.png" class="logo-img circle responsive-img">
         
-        <div class="logo-name">当前</div>
+        <div class="logo-name">博客</div>
         <div class="logo-desc">
             
             Never really desperate, only the lost of the soul.
@@ -471,7 +471,11 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><strong>基于webpack4.x编写</strong></p>
+                <h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><pre><code class="shell">npm install webpack webpack-cli -g</code></pre>
+<p>默认安装最新版，也可以用下面命令指定安装版本。</p>
+<pre><code class="shell">npm install webpack@3.x.x webpack-cli -g</code></pre>
+<p>这种方式是全局安装，不建议使用这种方式。敞若某个项目使用了比当前版本低的webpack将无法运行，所以最好是局部安装，如果不能保证项目所需的webpack版本一致的话。</p>
+<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><p><strong>基于webpack4.x编写</strong></p>
 <p>webpack默认使用自带配置文件，若项目路径内出现用户自定义的配置文件则使用用户自定义的配置文件。</p>
 <p>新建 webpack.config.js 文件。注意，webpack默认以此文件名文件为配置文件，若我们需要以其他文件名为配置文件，可以使用 –config filename 指令控制</p>
 <p>基本的webpack配置如下</p>
@@ -505,7 +509,7 @@ module.exports = &amp;#123;
 <td align="left">打包输出配置</td>
 </tr>
 </tbody></table>
-<p>输出路径不能使用相对路径，需要引入node path模块合并打包文件夹</p>
+<p>输出路径不能使用相对路径，需要引入node path模块合并打包文件夹。</p>
 <p>更多配置可参考 <a target="_blank" rel="noopener" href="https://www.webpackjs.com/concepts/">webpack中文网</a></p>
 
             </div>
@@ -683,9 +687,10 @@ git commit -m ‘备注’
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            基于webpack4.x编写
-webpack默认使用自带配置文件，若项目路径内出现用户自定义的配置文件则使用用户自定义的配置文件。
-新建 webpack.config.js 文件。注意，webpack默认以此文件名文件为配置文件，若我们需要
+                            安装npm install webpack webpack-cli -g
+默认安装最新版，也可以用下面命令指定安装版本。
+npm install webpack@3.x.x webpack-cli -g
+这种方式是全局安装，不建议使用这种方
                         
                     </div>
                     <div class="publish-info">

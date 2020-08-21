@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="git基本操作命令小全, 当前">
+    <meta name="keywords" content="git基本操作命令小全, 博客">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>git基本操作命令小全 | 当前</title>
+    <title>git基本操作命令小全 | 博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -41,7 +41,7 @@
                     
                     <img src="/medias/logo.png" class="logo-img" alt="LOGO">
                     
-                    <span class="logo-span">当前</span>
+                    <span class="logo-span">博客</span>
                 </a>
             </div>
             
@@ -140,7 +140,7 @@
         
         <img src="/medias/logo.png" class="logo-img circle responsive-img">
         
-        <div class="logo-name">当前</div>
+        <div class="logo-name">博客</div>
         <div class="logo-desc">
             
             Never really desperate, only the lost of the soul.
@@ -482,7 +482,7 @@
 <p>推送本地代码到远程仓库 <strong>origin</strong> 的 <strong>master</strong> 分支</p>
 </li>
 <li><p>git pull origin master</p>
-<p>拉取远程仓库 <strong>origin</strong> 的 <strong>master</strong> 分支的代码到本地</p>
+<p>拉取远程仓库 <strong>origin</strong> 的 <strong>master</strong> 分支的代码到本地git log</p>
 </li>
 </ol>
 <h3 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h3><ol>
@@ -514,6 +514,57 @@
 </li>
 <li><p>git branch -d dev</p>
 <p>删除 <strong>dev</strong> 分支</p>
+</li>
+</ol>
+<h3 id="版本回滚"><a href="#版本回滚" class="headerlink" title="版本回滚"></a>版本回滚</h3><ol>
+<li><p>git log</p>
+<p><img src="http://img.phare.xyz/image-20200817123052864.png" alt="git log"></p>
+<p>使用这个命令可以查看所有提交记录，commit 后面的 hash 码作为指定回滚版本的凭证</p>
+</li>
+<li><p>git reset –hard <code>commitId</code></p>
+<p>回滚至指定版本</p>
+</li>
+<li><p>git reset HEAD</p>
+<p>回滚至上一个版本</p>
+</li>
+<li><p>git reset HEAD~3</p>
+<p>回滚至前3次提交</p>
+</li>
+<li><p>git reset –hard HEAD~1</p>
+<p><strong>撤销commit，并且将commit下的代码也撤销掉</strong></p>
+</li>
+</ol>
+<p><strong>注：使用了 –hard 之后，最新的commit命令下修改的内容将会完全被撤销，慎用。</strong></p>
+<h3 id="冲突处理"><a href="#冲突处理" class="headerlink" title="冲突处理"></a>冲突处理</h3><ol>
+<li><p>git stash</p>
+<p>将当前改动文件提交到暂存区</p>
+</li>
+<li><p>git pull</p>
+<p>拉取当前分支最新代码</p>
+</li>
+<li><p>git stash pop</p>
+<p>合并冲突文件</p>
+</li>
+</ol>
+<p>接下来需要手动处理冲突文件，建议使用VSCode处理。</p>
+<h3 id="标签管理"><a href="#标签管理" class="headerlink" title="标签管理"></a>标签管理</h3><ol>
+<li><p>git tag</p>
+<p>查看所有标签</p>
+</li>
+<li><p>git tag -l [标签]</p>
+<p>查看某个版本的标签</p>
+</li>
+<li><p>git show [标签]</p>
+<p>查看标签详情，可以看到commit内容</p>
+</li>
+<li><p>git push origin [标签]</p>
+<p>推送标签到远程仓库</p>
+</li>
+<li><p>git tag -d [标签]</p>
+<p>删除本地标签</p>
+</li>
+<li><p>git push origin :refs/tags/[标签]</p>
+<p>删除远程标签</p>
 </li>
 </ol>
 <hr>
@@ -690,9 +741,10 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            基于webpack4.x编写
-webpack默认使用自带配置文件，若项目路径内出现用户自定义的配置文件则使用用户自定义的配置文件。
-新建 webpack.config.js 文件。注意，webpack默认以此文件名文件为配置文件，若我们需要
+                            安装npm install webpack webpack-cli -g
+默认安装最新版，也可以用下面命令指定安装版本。
+npm install webpack@3.x.x webpack-cli -g
+这种方式是全局安装，不建议使用这种方
                         
                     </div>
                     <div class="publish-info">
