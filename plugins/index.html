@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="webpack基本配置, 博客">
+    <meta name="keywords" content="plugins, 博客">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>webpack基本配置 | 博客</title>
+    <title>plugins | 博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -308,12 +308,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">webpack基本配置</h1>
+                    <h1 class="description center-align post-title">plugins</h1>
                 </div>
             </div>
         </div>
@@ -455,7 +455,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-08-11
+                    2020-08-25
                 </div>
                 
 
@@ -471,109 +471,8 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><pre><code class="shell">npm install webpack webpack-cli -g</code></pre>
-<p>默认安装最新版，也可以用下面命令指定安装版本。</p>
-<pre><code class="shell">npm install webpack@3.x.x webpack-cli -g</code></pre>
-<p>这种方式是全局安装，不建议使用这种方式。敞若某个项目使用了比当前版本低的webpack将无法运行，所以最好是局部安装，如果不能保证项目所需的webpack版本一致的话。</p>
-<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><p><strong>基于webpack4.x编写</strong></p>
-<p>webpack默认使用自带配置文件，若项目路径内出现用户自定义的配置文件则使用用户自定义的配置文件。</p>
-<p>新建 webpack.config.js 文件。注意，webpack默认以此文件名文件为配置文件，若我们需要以其他文件名为配置文件，可以使用 –config filename 指令控制</p>
-<p>基本的webpack配置如下</p>
-<pre><code class="js">const path = require(&#39;path&#39;)
-
-module.exports = &amp;#123;
-  mode: &#39;production&#39;
-  entry: &#39;./index.js&#39;,
-  output: &amp;#123;
-    filename: &#39;main.js&#39;
-    path: path.resolve(__dirname, &#39;build&#39;)
-  &amp;#125;
-&amp;#125;</code></pre>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th align="left">含义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>mode</td>
-<td align="left">当前打包模式，<strong>production</strong> 或 <strong>development</strong>。分别代表生产和开发，区别是生产打包会压缩代码，开发则不会</td>
-</tr>
-<tr>
-<td>entry</td>
-<td align="left">打包目标配置</td>
-</tr>
-<tr>
-<td>output</td>
-<td align="left">打包输出配置</td>
-</tr>
-</tbody></table>
-<p>输出路径不能使用相对路径，需要引入node path模块合并打包文件夹。</p>
-<p>更多配置可参考 <a target="_blank" rel="noopener" href="https://www.webpackjs.com/concepts/">webpack中文网</a></p>
-<h3 id="loader"><a href="#loader" class="headerlink" title="loader"></a>loader</h3><p>webpack自身只支持对js文件的打包，配置<strong>loader</strong>可以让webpack支持我们想要打包的文件类型。</p>
-<p><strong>注意：loader是有执行循序的，loader的执行循序是从最后一个到第一个，使用时一定要注意循序。</strong></p>
-<p>下面以图片打包为例：</p>
-<ol>
-<li>下载file-loader模块</li>
-</ol>
-<pre><code class="shell">    npm install file-loader -S</code></pre>
-<ol start="2">
-<li>配置loader使用</li>
-</ol>
-<pre><code class="javascript">const path = require(&#39;path&#39;)
-
-module.exports = &amp;#123;
-  mode: &#39;production&#39;
-  entry: &#39;./index.js&#39;,
-  module: &amp;#123;
-      rules: [
-          &amp;#123;
-              test: /\.jpg$/,
-              use: &amp;#123;
-                  loader: &#39;file-loader&#39;,
-                  options: &amp;#123;
-                      name: &#39;[name].[ext]&#39;,
-                      outputPath: &#39;imgs/&#39;
-                    &amp;#125;
-                &amp;#125;
-            &amp;#125;
-      ]
-    &amp;#125;,
-  output: &amp;#123;
-    filename: &#39;main.js&#39;
-    path: path.resolve(__dirname, &#39;build&#39;)
-  &amp;#125;
-&amp;#125;</code></pre>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>rules</td>
-<td>打包规则</td>
-</tr>
-<tr>
-<td>test</td>
-<td>正则校验配对文件</td>
-</tr>
-<tr>
-<td>use</td>
-<td>匹配上的文件使用这种配置进行打包</td>
-</tr>
-</tbody></table>
-<p>options是loader的配置项，详情可以查看对应loader提供的配置项。</p>
-<p>上边options配置意思是打包后的文件名保持原本的名称和扩展名 并且输出路径为 <strong>outputPath</strong></p>
-<h3 id="plugins"><a href="#plugins" class="headerlink" title="plugins"></a>plugins</h3><p>plugins是webpack的插件</p>
-<p>配置plugins使用，在webpack配置文件内引入插件，然后在配置项中使用插件。</p>
-<pre><code class="javascript">import htmlWebpackPlugin from &#39;xxx&#39;
-
-plugins: [
-    new htmlWebpackPlugin()
-]</code></pre>
+                <h3 id="html-webpack-plugin"><a href="#html-webpack-plugin" class="headerlink" title="html-webpack-plugin"></a>html-webpack-plugin</h3><pre><code class="shell">npm install html-webpack-plugin</code></pre>
+<p>这个插件会在打包结束时自动增加一个index.html文件并把打包好的文件引入。</p>
 
             </div>
             <hr/>
@@ -599,7 +498,7 @@ plugins: [
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://blog.phare.xyz/webpack%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/">https://blog.phare.xyz/webpack%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/</a>
+                    <a href="https://blog.phare.xyz/plugins/">https://blog.phare.xyz/plugins/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -680,85 +579,31 @@ plugins: [
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/git/">
+                <a href="/plugins/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="git基本操作命令小全">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="plugins">
                         
-                        <span class="card-title">git基本操作命令小全</span>
+                        <span class="card-title">plugins</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            基础操作
-git add .
-. 把所有改动文件提交到暂存区。另外可以直接指定某个文件夹或者文件提交
+                            html-webpack-pluginnpm install html-webpack-plugin
+这个插件会在打包结束时自动增加一个index.html文件并把打包好的文件引入。
 
-git commit -m ‘备注’
-最常见的用法，把暂存区的文件提交到本地版本库。-m 参数代表后面输入提交备注，如果不加 -m 会进
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-08-11
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/git/" class="post-category">
-                                    git
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/git/">
-                        <span class="chip bg-color">git</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/webpack%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="webpack基本配置">
-                        
-                        <span class="card-title">webpack基本配置</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            安装npm install webpack webpack-cli -g
-默认安装最新版，也可以用下面命令指定安装版本。
-npm install webpack@3.x.x webpack-cli -g
-这种方式是全局安装，不建议使用这种方
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-11
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-25
                             </span>
                         <span class="publish-author">
                             
@@ -773,6 +618,56 @@ npm install webpack@3.x.x webpack-cli -g
                     </div>
                 </div>
 
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/webpack/">
+                        <span class="chip bg-color">webpack</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/loader/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="loader">
+                        
+                        <span class="card-title">loader</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            file-loaderfile-loader用来对文件的打包操作。
+url-loaderurl-loader和file-loader非常相似。不同是url-loader可以把图片编译成base64，并且可以配置limit项，当图片文件大小不
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-24
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/webpack/" class="post-category">
+                                    webpack
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
                 
                 <div class="card-action article-tags">
                     
