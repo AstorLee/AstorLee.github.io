@@ -29,7 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.0.0"></head>
+<meta name="generator" content="Hexo 4.2.1"></head>
 
 
 <body>
@@ -507,7 +507,8 @@
 <p>创建 <strong>dev</strong> 本地分支</p>
 </li>
 <li><p>git checkout master</p>
-<p>切换到 <strong>master</strong> 分支</p>
+<p>切换到 <strong>master</strong> 分支。</p>
+<p>git checkout 还有其他妙用，我们可以用它来回滚（切换）指定文件到特定版本。先 <code>git log &lt;文件路径&gt;</code> 拿到文件的版本 号，然后使用 <code>git checkout &lt;版本号&gt; &lt;文件路径&gt;</code>即可</p>
 </li>
 <li><p>git merge dev</p>
 <p>当前分支合并 <strong>dev</strong> 分支</p>
@@ -519,7 +520,9 @@
 <h3 id="版本回滚"><a href="#版本回滚" class="headerlink" title="版本回滚"></a>版本回滚</h3><ol>
 <li><p>git log</p>
 <p><img src="http://img.phare.xyz/image-20200817123052864.png" alt="git log"></p>
-<p>使用这个命令可以查看所有提交记录，commit 后面的 hash 码作为指定回滚版本的凭证</p>
+<p>使用这个命令可以查看所有提交记录，commit 后面的 hash 码作为指定回滚版本的凭证。</p>
+<p>可以使用<code>git log --pretty=oneline path</code>查看该文件的提交记录，path作为文件路径传入。</p>
+<p><img src="http://img.phare.xyz/image-20200907092321708.png" alt="image-20200907092321708"></p>
 </li>
 <li><p>git reset –hard <code>commitId</code></p>
 <p>回滚至指定版本</p>
@@ -532,6 +535,9 @@
 </li>
 <li><p>git reset –hard HEAD~1</p>
 <p><strong>撤销commit，并且将commit下的代码也撤销掉</strong></p>
+</li>
+<li><p>git reset HEAD  文件路径</p>
+<p>指定回滚对某个文件的提交。</p>
 </li>
 </ol>
 <p><strong>注：使用了 –hard 之后，最新的commit命令下修改的内容将会完全被撤销，慎用。</strong></p>
@@ -566,6 +572,15 @@
 <li><p>git push origin :refs/tags/[标签]</p>
 <p>删除远程标签</p>
 </li>
+</ol>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ol>
+<li><p>git show</p>
+<p>查看当前改动文件的记录。</p>
+<p><img src="http://img.phare.xyz/image-20200907092748992.png" alt="image-20200907092748992"></p>
+<p>也可以指定版本号查看， 使用<code>git log</code>查看版本号，然后<code>git show &lt;版本号&gt;</code>。</p>
+<p>还可以指定版本号指定文件查看，操作流程和上面一致，但<code>git show &lt;版本号&gt; &lt;文件路径&gt;</code>。</p>
+</li>
+<li></li>
 </ol>
 <hr>
 <p>更多命令更新中…</p>

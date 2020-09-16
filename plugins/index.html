@@ -29,7 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.0.0"></head>
+<meta name="generator" content="Hexo 4.2.1"></head>
 
 
 <body>
@@ -471,8 +471,45 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="html-webpack-plugin"><a href="#html-webpack-plugin" class="headerlink" title="html-webpack-plugin"></a>html-webpack-plugin</h3><pre><code class="shell">npm install html-webpack-plugin</code></pre>
+                <h3 id="html-webpack-plugin"><a href="#html-webpack-plugin" class="headerlink" title="html-webpack-plugin"></a>html-webpack-plugin</h3><pre><code class="shell">npm install html-webpack-plugin -S</code></pre>
 <p>这个插件会在打包结束时自动增加一个index.html文件并把打包好的文件引入。</p>
+<p>常用配置参数</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>template</td>
+<td>‘./index,html’</td>
+<td>以参数目录文件为生成index.html模板</td>
+</tr>
+</tbody></table>
+<h3 id="clean-webpack-plugin"><a href="#clean-webpack-plugin" class="headerlink" title="clean-webpack-plugin"></a>clean-webpack-plugin</h3><pre><code class="shell">npm install clean-webpack-plugin -S</code></pre>
+<p>这个插件会在生成打包文件前清除掉指定的目录下所有文件。</p>
+<p>参数接受一个数组，内容为需要清除目录名。</p>
+<pre><code class="javascript">const path = require(&#39;path&#39;)
+const htmlWebpackPlugin = require(&#39;html-webpack-plugin&#39;)
+const { CleanWebpackPlugin } = require(&#39;clean-webpack-plugin&#39;)
+
+module.exports = {
+  mode: &#39;development&#39;,
+  devtool: &#39;none&#39;,
+  entry: &#39;./src/main.js&#39;,
+  plugins: [
+    new htmlWebpackPlugin({
+      template: &#39;./src/pulicb/index.html&#39;
+    }),
+    new CleanWebpackPlugin() // clean
+  ],
+  output: {
+    filename: &#39;index.js&#39;,
+    path: path.resolve(__dirname, &#39;build&#39;)
+  }
+}</code></pre>
 
             </div>
             <hr/>
@@ -579,50 +616,46 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/plugins/">
+                <a href="/http%E5%8D%8F%E8%AE%AE/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="plugins">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="http协议">
                         
-                        <span class="card-title">plugins</span>
+                        <span class="card-title">http协议</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            html-webpack-pluginnpm install html-webpack-plugin
-这个插件会在打包结束时自动增加一个index.html文件并把打包好的文件引入。
-
+                            
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-25
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-08-26
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/webpack/" class="post-category">
-                                    webpack
+                            <a href="/categories/http%E5%8D%8F%E8%AE%AE/" class="post-category">
+                                    http协议
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/webpack/">
-                        <span class="chip bg-color">webpack</span>
+                    <a href="/tags/http%E5%8D%8F%E8%AE%AE/">
+                        <span class="chip bg-color">http协议</span>
                     </a>
                     
                 </div>

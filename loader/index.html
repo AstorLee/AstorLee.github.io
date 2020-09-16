@@ -29,7 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.0.0"></head>
+<meta name="generator" content="Hexo 4.2.1"></head>
 
 
 <body>
@@ -473,12 +473,12 @@
             <div id="articleContent">
                 <h3 id="file-loader"><a href="#file-loader" class="headerlink" title="file-loader"></a>file-loader</h3><p>file-loader用来对文件的打包操作。</p>
 <h3 id="url-loader"><a href="#url-loader" class="headerlink" title="url-loader"></a>url-loader</h3><p>url-loader和file-loader非常相似。不同是url-loader可以把图片编译成base64，并且可以配置limit项，当图片文件大小不大于此项就把图片编译成base64。</p>
-<pre><code class="javascript">&amp;#123;
+<pre><code class="javascript">{
   loader: &#39;url-loader&#39;
-  options: &amp;#123;
+  options: {
     limit: 102400 // 字节单位
-  &amp;#125;
-&amp;#125;</code></pre>
+  }
+}</code></pre>
 <h3 id="style-loader"><a href="#style-loader" class="headerlink" title="style-loader"></a>style-loader</h3><p>通常配合 <strong>css-loader</strong> 使用，style-loader会把css内容放进页面header的<code>style</code>元素中。</p>
 <p><img src="http://img.phare.xyz/image-20200824133152392.png" alt="image-20200824133152392"></p>
 <h3 id="css-loader"><a href="#css-loader" class="headerlink" title="css-loader"></a>css-loader</h3><p>配合style-loader使用，css-loader处理css文件各之间的依赖关系，最终合并成一段css。</p>
@@ -512,11 +512,11 @@
 <pre><code class="shell">npm install postcss-loader autoprefixer -S</code></pre>
 </li>
 <li><p>项目根目录新建postcss.config.js</p>
-<pre><code class="javascript">modules.export = &amp;#123;
+<pre><code class="javascript">modules.export = {
   plugins: [
     require(&#39;autoprefixer&#39;)
   ]
-&amp;#125;</code></pre>
+}</code></pre>
 <p>输入上面配置，最后别忘记在webpack配置文件中配置使用postcss-loader。</p>
 </li>
 </ol>
@@ -642,9 +642,19 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            html-webpack-pluginnpm install html-webpack-plugin
+                            html-webpack-pluginnpm install html-webpack-plugin -S
 这个插件会在打包结束时自动增加一个index.html文件并把打包好的文件引入。
+常用配置参数
 
+
+
+选项
+参数
+含义
+
+
+
+tem
                         
                     </div>
                     <div class="publish-info">
@@ -696,8 +706,9 @@
                             动态style没法解析
 &lt;view class=&quot;container&quot; :style=&quot;temp&quot;&gt;
 
-temp = &amp;#123;
-  width: &#39;777px&#39;
+temp = {
+  width: &#39;777px&#39;,
+  heigh
                         
                     </div>
                     <div class="publish-info">

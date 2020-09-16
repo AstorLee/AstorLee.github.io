@@ -29,7 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.0.0"></head>
+<meta name="generator" content="Hexo 4.2.1"></head>
 
 
 <body>
@@ -474,18 +474,18 @@
                 <h4 id="动态style没法解析"><a href="#动态style没法解析" class="headerlink" title="动态style没法解析"></a>动态style没法解析</h4><p><img src="http://img.phare.xyz/image-20200817124711705.png" alt="动态style没法解析"></p>
 <pre><code class="javascript">&lt;view class=&quot;container&quot; :style=&quot;temp&quot;&gt;
 
-temp = &amp;#123;
+temp = {
   width: &#39;777px&#39;,
   height: &#39;500px&#39;
-&amp;#125;</code></pre>
+}</code></pre>
 <p>uniapp不会解析这种形式的对象，可以直接把style写在style属性里或者或像下面这样</p>
 <pre><code class="javascript">&lt;view class=&quot;container&quot; :style=&quot;[temp]&quot;&gt;
-&lt;view class=&quot;container&quot; :style=&quot;&amp;#123;width: 330px&amp;#125;&quot;&gt;
+&lt;view class=&quot;container&quot; :style=&quot;{width: 330px}&quot;&gt;
 
-temp = &amp;#123;
+temp = {
   width: &#39;777px&#39;,
   height: &#39;500px&#39;
-&amp;#125;</code></pre>
+}</code></pre>
 
             </div>
             <hr/>

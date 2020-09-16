@@ -4,11 +4,269 @@
   
     
     <entry>
+      <title>babel插件使用记录</title>
+      <link href="/babel%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/"/>
+      <url>/babel%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/</url>
+      
+        <content type="html"><![CDATA[<h3 id="babel-plugin-dynamic-import-webpack-非官方"><a href="#babel-plugin-dynamic-import-webpack-非官方" class="headerlink" title="babel-plugin-dynamic-import-webpack(非官方)"></a>babel-plugin-dynamic-import-webpack(非官方)</h3><p>这个插件主要用来转换 webpack 动态import 功能。</p><ol><li><p>安装</p><pre><code class="shell">npm install babel-plugin-dynamic-import-webpack -S</code></pre></li><li><p>配置</p><pre><code class="javascript">// .babelrc{  plugins: [    &#39;dynamic-import-webpack&#39;  ]}</code></pre></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> babel </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> babel </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>微信小程序获取登录信息</title>
+      <link href="/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E8%8E%B7%E5%8F%96%E7%99%BB%E5%BD%95%E4%BF%A1%E6%81%AF/"/>
+      <url>/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E8%8E%B7%E5%8F%96%E7%99%BB%E5%BD%95%E4%BF%A1%E6%81%AF/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> 微信小程序 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 微信小程序 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>微信公众号获取用户信息</title>
+      <link href="/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF/"/>
+      <url>/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> 微信公众号 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 微信公众号 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>webpack高级概念</title>
+      <link href="/webpack%E9%AB%98%E7%BA%A7%E6%A6%82%E5%BF%B5/"/>
+      <url>/webpack%E9%AB%98%E7%BA%A7%E6%A6%82%E5%BF%B5/</url>
+      
+        <content type="html"><![CDATA[<h3 id="tree-shaking"><a href="#tree-shaking" class="headerlink" title="tree shaking"></a>tree shaking</h3><p>treeShaking是webpack2引入的技术。下面是对treeShaking的一个比喻：</p><blockquote><p>如果把代码打包比作制作蛋糕。传统的方式是把鸡蛋(带壳)全部丢进去搅拌，然后放入烤箱，最后把(没有用的)蛋壳全部挑选并剔除出去。而 treeshaking 则是一开始就把有用的蛋白蛋黄放入搅拌，最后直接作出蛋糕。</p></blockquote><p>因此，相比于 排除不使用的代码，tree shaking 其实是 找出使用的代码。</p><p>具体对其功能上的描述是当我们从一个模块局部引用这个模块的方法时，在打包时会出现没被引用的代码依然被打包到文件去，而treeShaking就可以解决这种问题。</p><h4 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h4><p><strong>treeShaking仅支持对es6 module解析，不支持CommonJS。要说为什么，因为es6 module是静态引用，而CommonJS是动态引用。</strong></p><ol><li>配置webpack</li></ol><pre><code class="javascript">// webpack.config.jsmodule.exports = {  optimization: {    usedExports: true  }}</code></pre><ol start="2"><li>配置 package.json</li></ol><pre><code class="json">// 若某些文件不希望被treeShaking处理跨域在这里设置{    &quot;sideEffects&quot;: [    &quot;*.css&quot;  ]}</code></pre><p><strong>注意：在development模式下打包就算开启treeShaking依然会被全部打包进入，而在product模式下不需要配置默认启用treeShaking</strong></p><h3 id="Development-和-product-模式的区分打包"><a href="#Development-和-product-模式的区分打包" class="headerlink" title="Development 和 product 模式的区分打包"></a>Development 和 product 模式的区分打包</h3><p>product模式打包默认压缩文件，我们可以新建一个product打包配置文件，并配置npm script product模式下打包命令。</p><pre><code class="json">&quot;scripts&quot;: {    &quot;dev&quot;: &quot;webpack-dev-server --config webpack.dev.config.js&quot;,    &quot;build&quot;: &quot;webpack --config webpack.pro.config.js&quot;}</code></pre><p>上面的写法配置文件直接指向项目根目录，如果我们想单独把配置文件放另外一个文件夹上可以是用相对路径指向配置文件，例如：./build/webpack.dev.config.js。</p><p>如果我们想拆分配置文件中共同配置项可以使用 <code>webpack-merge</code> 帮助我们合并配置。</p><ol><li><p>先安装插件</p><pre><code class="shell">npm install webpack-merge -S</code></pre></li><li><p>假设我们已经提取了公共配置并放入<code>webpack.common.js</code> 文件中，下面我们来使用 <code>webpack-merge</code></p><pre><code class="javascript">// webpack.dev.config.jsconst merge = require(&#39;webpack-merge&#39;);const commonConfig = require(&#39;webpack.common.js&#39;)const devConfig = {  ...}// 使用wepack-merge合并配置文件module.exports = merge(commonConfig, devConfig)</code></pre></li></ol><h3 id="Code-Splitting"><a href="#Code-Splitting" class="headerlink" title="Code Splitting"></a>Code Splitting</h3><p>CodeSplitting即代码分割，其实这个概念在webpack出现之前就已经存在，<del>也许以前的开发者都是手动去做代码分割呢</del> 至于为什么现在一提到webpack就想到代码分割应该是因为webpack内置的一些插件只需要我们写个配置项就可以使用，极其简单易用。</p><h4 id="代码分割的好处"><a href="#代码分割的好处" class="headerlink" title="代码分割的好处"></a>代码分割的好处</h4><p>我们先来说说代码分割的好处，如果我们不使用代码分割打包后的业务逻辑和node_modules都会被打包到一个文件内。这也是没有问题的，正常执行和使用。但是会使得这个文件巨大，当打开web应用时需要等待整个下载完这个文件才能使用。如果我们使用了代码分割，从一个文件分割成两个文件，那么通过http协议的并行下载可能会比下载一个文件更快，当然这也不是必然会更快，<strong><em>更重要的是若我们修改了业务代码，如果我们使用了代码分割那重新进入web应用时因为浏览器存在缓存，我们只需要重新下载代码改变的文件，而不需要下载所有文件。这使得页面加载速度更快，用户体验更好。</em></strong></p><p><del>so，你明白为什么要使用代码分割了吧[狗头]。</del></p><h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><p>下面我们来看下怎么配置代码分割。</p><pre><code class="javascript">// webpack.config.jsmodule.exports = {  optimization: {    splitChunks: {      chunks: &#39;all&#39;    }  }}</code></pre><p>上面配置所有模块都做分割打包。</p><p><strong>这里有个知识点，webpack 其实有两种实现代码分割的方式。一种是上面这种使用配置去让webpack进行代码分割，另一种是异步引入文件，这种情况下即使不配置代码分割 webpack 也会使用代码分割。</strong></p><p><strong>但是不管以哪种方式实现代码分割，配置项都对其有效。</strong></p><h4 id="SplitChunksPlugin插件配置"><a href="#SplitChunksPlugin插件配置" class="headerlink" title="SplitChunksPlugin插件配置"></a>SplitChunksPlugin插件配置</h4><p>实际上webpack代码分割使用了<code>SplitChunksPlugin</code> 这个插件，下面我们来看下这个插件常用的一些参数。</p><h5 id="splitChunks-chunks-‘async’"><a href="#splitChunks-chunks-‘async’" class="headerlink" title="splitChunks.chunks = ‘async’"></a>splitChunks.chunks = ‘async’</h5><p>设置代码分割对什么引用方式生效，上面设置只对异步代码生效，设置为all对所有方式都进行分割，设置为initial对同步代码进行分割。</p><h5 id="splitChunks-minSize-30000"><a href="#splitChunks-minSize-30000" class="headerlink" title="splitChunks.minSize = 30000"></a>splitChunks.minSize = 30000</h5><p>设置代码分割对文件大小下限，当文件大于30000个字节时才会进行代码分割。</p><h5 id="splitChunks-maxSize-50000"><a href="#splitChunks-maxSize-50000" class="headerlink" title="splitChunks.maxSize = 50000"></a>splitChunks.maxSize = 50000</h5><p>当分割文件大于50000字节（50kb）会尝试对文件进行二次分割，这个配置项了解一下就好，通常不用设置。</p><h5 id="splitChunks-minChunks-2"><a href="#splitChunks-minChunks-2" class="headerlink" title="splitChunks.minChunks = 2"></a>splitChunks.minChunks = 2</h5><p>当文件引入次数大于或等于2次时才进行代码分割</p><h5 id="splitChunks-maxAsyncRequests-5"><a href="#splitChunks-maxAsyncRequests-5" class="headerlink" title="splitChunks.maxAsyncRequests = 5"></a>splitChunks.maxAsyncRequests = 5</h5><p>同时加载文件数最多是5个，分割文件最多是5个，后面即使有需要分割的文件也不会再进行分割。之所以会有这样的配置主要是因为http同步请求最多5个</p><h5 id="splitChunks-maxInitialRequests-3"><a href="#splitChunks-maxInitialRequests-3" class="headerlink" title="splitChunks.maxInitialRequests = 3"></a>splitChunks.maxInitialRequests = 3</h5><p>入口文件分割如果超过3个就不会在进行代码分割</p><h5 id="splitChunks-automaticNameDelimiter-‘-’"><a href="#splitChunks-automaticNameDelimiter-‘-’" class="headerlink" title="splitChunks.automaticNameDelimiter = ‘~’"></a>splitChunks.automaticNameDelimiter = ‘~’</h5><p>分割文件名的连接符</p><p><img src="http://img.phare.xyz/image-20200912153454216.png" alt="image-20200912153454216"></p><h5 id="splitChunks-name-true"><a href="#splitChunks-name-true" class="headerlink" title="splitChunks.name = true"></a>splitChunks.name = true</h5><p>是否使用默认文件名格式（组名 连接符 原文件名）。</p><p><strong>splitChunks.cacheGroups = false</strong></p><p>缓存组，可以配置符合上面配置的文件进行分割，当某个组每次遇到符合规则的文件时会先缓存，直到最后没遇到之后把组里面的文件全打包成一个文件。</p><pre><code class="javascript">optimization: {  splitChunks: {    cacheGroups: {      vendors: {        test: /[\\/]node_modules[\\/]/,        priority: -10,        filename: &#39;verdors&#39;    // 配置打包后的文件名      },      default: {                priority: -20,        reuseExistingChunk: true,        filename: &#39;verdors&#39;    // 配置打包后的文件名      }    }  }}</code></pre><p>vendors其实就是一个代码分割规则组，上面配置判断文件是否在node_modules目录下，如果在则使用这个组的。在分割文件时默认在文件名加个vendors前缀。</p><p>priority 参数用于设置优先级，数值越大优先级越高，当某个文件符合多个组的规则时组的优先级越大就使用哪个组。</p><p>reuseExistingChunk 如果在某个文件内发现在其他已经分割的文件中已经分割好的文件，会复用分割好的文件，不重新分割。</p><p>配置打包分割后的文件使用我们设置的文件名。注意需要配合魔法注释使用。</p><pre><code class="javascript">import(/* webpackChunkname:&quot;lodash&quot; */ &quot;lodash&quot;)</code></pre><p>splitChunks.cacheGroups.default = false</p><p>不设置默认分割组规则</p><p>更多配置可以去官网查看<a href="https://webpack.js.org/plugins/split-chunks-plugin/" target="_blank" rel="noopener">SplitChunksPlugin</a></p><h3 id="Lazy-loading-懒加载，chunks"><a href="#Lazy-loading-懒加载，chunks" class="headerlink" title="Lazy loading 懒加载，chunks"></a>Lazy loading 懒加载，chunks</h3><p>chunks就是每个需要打包的文件，懒加载即异步引入，其实是es规范里的一个实验性功能，与webpack无关，webpack只是支持这种写法的解析。至于写法我就不介绍了，写过react或vue代码应该都知道。</p><h3 id="打包分析，Preloading-Prefetching"><a href="#打包分析，Preloading-Prefetching" class="headerlink" title="打包分析，Preloading, Prefetching"></a>打包分析，Preloading, Prefetching</h3><p>webpack官方提供了一个打包分析插件 analyse，下面我们来说下怎么使用。</p><ol><li><p>要使用analyse需要生成一个打包信息json</p><p>配置package.json npm scripts 命令，在打包命令 webpack 后面加上 –profile –json &gt; stats.json即可。</p><pre><code class="json">{    &quot;start&quot;: &quot;webpack --profile --json &gt; stats.json --config webpack.dev.js&quot;}</code></pre><p>运行 npm start后会在项目根目录生成 stats.json 文件。</p></li><li><p>解析文件</p><p>打开<a href="http://webpack.github.io/analyse" target="_blank" rel="noopener">analyse</a>上传stats.json文件即可查看打包分析。</p><p><strong>但是需要注意，这个网站可能需要魔法上网才能正常访问</strong></p></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> webpack </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> webpack </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>webpack使用babel配置</title>
+      <link href="/webpack%E4%BD%BF%E7%94%A8babel%E9%85%8D%E7%BD%AE/"/>
+      <url>/webpack%E4%BD%BF%E7%94%A8babel%E9%85%8D%E7%BD%AE/</url>
+      
+        <content type="html"><![CDATA[<p>直接上配置。</p><ol><li><p>安装插件</p><pre><code class="shell">npm install  babel-loader @babel/core -D</code></pre></li><li><p>配置webpack</p><pre><code class="javascript">// webpack.config.jsmodule: {  rules: [    {       test: /\.js$/,      exclude: /node_modules/,      loader: &quot;babel-loader&quot;    }  ]}</code></pre></li></ol><p>到这我们已经成功配置好babel了，但是还没让他执行任何操作，下面我没来配置babel插件使用。</p><ol><li><p>安装插件</p><pre><code class="shell">npm install @babel/preset-env -D</code></pre></li><li><p>配置babel插件使用</p><p>在项目根目录创建 <code>.babelrc</code> 文件。</p><pre><code class="json">{  &quot;presets&quot;: [&quot;@babel/preset-env&quot;]}</code></pre><p>其实这个步骤也可以省略，我们可以在webpack的babel配置中直接使用配置。</p><pre><code class="javascript">// webpack.config.jsmodule: {  rules: [    {       test: /\.js$/,      exclude: /node_modules/,      loader: &quot;babel-loader&quot;,      options: {    // 配置工具使用        presets: [          &quot;@babel/preset-env&quot;        ]      }    }  ]}</code></pre></li></ol><p>完成上面操作后即可实现es6转es5语法，但是仅仅是上面配置仍是不够的。</p><p>源代码</p><p><img src="http://img.phare.xyz/image-20200902102720898.png" alt="image-20200902102720898"></p><p>转换后</p><p><img src="http://img.phare.xyz/image-20200902102744964.png" alt="image-20200902102744964"></p><p>这里会发现箭头函数是有被转换了，但是 Promise 或者 数组的map方法还是没有被转换。可以看出 preset-env 只是帮我们转换了es6语法，没有帮我们转换一些新增的对象和方法。下面使用 babel-polyfill 来弥补这个缺失。</p><p>注意这种使用方法只适用于写业务代码，因为替换的东西都是全局的，会污染全局环境。</p><pre><code class="shell">npm install --save @babel/polyfill</code></pre><p>然后在入口文件引入polyfill即可，此时我们打包文件会发现文件包变得很大，这是因为我们是直接引入了一整个文件，我们可以配置 preset-env，让babel为我们按需使用，如果配置了useBuiltIns我们就不需要在入口文件引入polyfill了。</p><pre><code class="javascript">// webpack.config.jsmodule: {  rules: [    {       test: /\.js$/,      exclude: /node_modules/,      loader: &quot;babel-loader&quot;,      options: {    // 配置工具使用        presets: [          &quot;@babel/preset-env&quot;,          {            useBuiltIns: &#39;usage&#39;, // 按需使用            targets: {              chrome: &#39;&gt;67&#39;    // 指定chrome版本大于67时才使用转换            }          }        ]      }    }  ]}</code></pre><p>如果我们要写库代码，应该用下面的方法，plugin-transform-runtime会以闭包的形式去注入而不会污染全局环境。</p><pre><code class="shell">npm install @babel/plugin-transform-runtime @babel/runtime-corejs2 -D</code></pre><p>然后引用这个插件</p><pre><code class="javascript">plugins: [    [    &#39;@babel/plugin-transform-runtime&#39;,    {      corejs: 2,      heplers: true,      regenerator: true,      useESModules: false    }  ]]</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> webpack </category>
+          
+          <category> babel </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> webpack </tag>
+            
+            <tag> babel </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>HotModuleReplacement</title>
+      <link href="/HotModuleReplacement/"/>
+      <url>/HotModuleReplacement/</url>
+      
+        <content type="html"><![CDATA[<p>HotModuleReplacement 简称 HMR，意思是热重载。</p><p>当我们配合了webpack-dev-server之后会出现一个问题，每次我修改完文件浏览器都会自动刷新，导致之前在页面做过的一些操作。这样会增加我们调试的繁琐程度，这时候我们就可以使用HMR来实现文件热替换而不刷新页面。</p><p>使用很简单，下面直接上代码</p><pre><code class="javascript">// webpack.config.jsconst webpack = require(&#39;webpack&#39;);module.export = {  devServer: {    publicPath: &#39;/&#39;,    port: 8080,    hot: true // 开启热重载功能    hotOnly: true // 即使不使用热重载功能或热重载不成功也不自动刷新页面  },  plugins: [    new webpack.HotModuleReplacementPlugin() // 使用webpack自带热重载插件  ]}</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> webpack </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> webpack </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>使用webpack-dev-middleware手写一个devServer</title>
+      <link href="/%E4%BD%BF%E7%94%A8webpack-dev-middleware%E6%89%8B%E5%86%99%E4%B8%80%E4%B8%AAdevServer/"/>
+      <url>/%E4%BD%BF%E7%94%A8webpack-dev-middleware%E6%89%8B%E5%86%99%E4%B8%80%E4%B8%AAdevServer/</url>
+      
+        <content type="html"><![CDATA[<p>webpack-dev-middleware 是 nodejs 的中间件，可以给我们提供一些webpack打包时的接口。</p><p>新建server.js</p><p>直接上代码</p><pre><code class="javascript">const express = require(&#39;express&#39;);const webpack = require(&#39;webpack&#39;);const webpackDevMiddleware = require(&#39;webpack-dev-middleware&#39;);const config = require(&#39;./webpack.config.js&#39;);const complier = webpack(config);    // webpack编译器const app = express();// 挂载 webpackDevMiddleware 中间件app.use(webpackDevMiddleware(complier, {  publicPath: config.output.publicPath}))app.listen(3333, () =&gt; {  console.log(&#39;服务已启动&#39;)})</code></pre><p>然后就可以使用node server.js启动应用了，这里仅做示范因为要完全实现webpack-dev-server那种效果需要配置很多东西。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> webpack </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> webpack </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>source-map</title>
+      <link href="/source-map/"/>
+      <url>/source-map/</url>
+      
+        <content type="html"><![CDATA[<p>介绍几个常用的source-map配置</p><h3 id="source-map"><a href="#source-map" class="headerlink" title="source-map"></a>source-map</h3><p>会生成.map文件。</p><h3 id="inline-source-map"><a href="#inline-source-map" class="headerlink" title="inline-source-map"></a>inline-source-map</h3><p>生成的map文件会以base64形式在文件内引用，不产生.map文件。</p><h3 id="inline-cheap-source-map"><a href="#inline-cheap-source-map" class="headerlink" title="inline-cheap-source-map"></a>inline-cheap-source-map</h3><p>cheap有两种作用：一是将错误只定位到行，不定位到列。二是映射业务代码，不映射loader和第三方库等。可以提升打包构建的速度。</p><h3 id="inline-cheap-module-source-map"><a href="#inline-cheap-module-source-map" class="headerlink" title="inline-cheap-module-source-map"></a>inline-cheap-module-source-map</h3><p>module会映射loader和第三方库。</p><h3 id="eval"><a href="#eval" class="headerlink" title="eval"></a>eval</h3><p>使用eval方式执行错误信息，效率和性能最佳。但是当代码复杂时，提示信息可能不精确。</p><h3 id="推荐使用方式"><a href="#推荐使用方式" class="headerlink" title="推荐使用方式"></a>推荐使用方式</h3><h4 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h4><pre><code class="bash">devtool: &#39;cheap-module-eval-source-map&#39;,</code></pre><h4 id="生产环境"><a href="#生产环境" class="headerlink" title="生产环境"></a>生产环境</h4><pre><code class="bash">devtool: &#39;cheap-module-source-map&#39;,</code></pre><p>关于source-map更详细的信息可以访问 <a href="https://webpack.js.org/configuration/devtool/#root" target="_blank" rel="noopener">devtool</a> 文档</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> webpack </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> webpack </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>scoped深度作用选择器</title>
+      <link href="/scoped%E6%B7%B1%E5%BA%A6%E4%BD%9C%E7%94%A8%E9%80%89%E6%8B%A9%E5%99%A8/"/>
+      <url>/scoped%E6%B7%B1%E5%BA%A6%E4%BD%9C%E7%94%A8%E9%80%89%E6%8B%A9%E5%99%A8/</url>
+      
+        <content type="html"><![CDATA[<p>/deep/选择器是Scoped CSS规范提供的选择器，不是原生的css选择器。</p><p>在使用UI框架、如element UI 时时常会遇到某些组件样式不符合项目UI或者业务需求，这时候我们想要修改组件样式有两种方法。</p><ol><li><p>公共样式覆盖</p><p>在组件外包裹一个div并取类名，在全局style中 <code>包裹class</code> &gt; <code>需要修改样式的class</code>。</p><p>这种做法可以减少污染全局样式，切记不要直接修改全局修改组件样式。</p></li><li><p>使用/deep/选择器</p><p>使用方法：在要修改的class前增加/deep/即可</p><pre><code class="css">/deep/ .el-table--enable-row-hover .el-table__body tr:hover&gt;td{    background: red;}</code></pre></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> vue </category>
+          
+          <category> css </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vue </tag>
+            
+            <tag> css </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>http协议</title>
+      <link href="/http%E5%8D%8F%E8%AE%AE/"/>
+      <url>/http%E5%8D%8F%E8%AE%AE/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> http协议 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> http协议 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>plugins</title>
       <link href="/plugins/"/>
       <url>/plugins/</url>
       
-        <content type="html"><![CDATA[<h3 id="html-webpack-plugin"><a href="#html-webpack-plugin" class="headerlink" title="html-webpack-plugin"></a>html-webpack-plugin</h3><pre><code class="shell">npm install html-webpack-plugin</code></pre><p>这个插件会在打包结束时自动增加一个index.html文件并把打包好的文件引入。</p>]]></content>
+        <content type="html"><![CDATA[<h3 id="html-webpack-plugin"><a href="#html-webpack-plugin" class="headerlink" title="html-webpack-plugin"></a>html-webpack-plugin</h3><pre><code class="shell">npm install html-webpack-plugin -S</code></pre><p>这个插件会在打包结束时自动增加一个index.html文件并把打包好的文件引入。</p><p>常用配置参数</p><table><thead><tr><th>选项</th><th>参数</th><th>含义</th></tr></thead><tbody><tr><td>template</td><td>‘./index,html’</td><td>以参数目录文件为生成index.html模板</td></tr></tbody></table><h3 id="clean-webpack-plugin"><a href="#clean-webpack-plugin" class="headerlink" title="clean-webpack-plugin"></a>clean-webpack-plugin</h3><pre><code class="shell">npm install clean-webpack-plugin -S</code></pre><p>这个插件会在生成打包文件前清除掉指定的目录下所有文件。</p><p>参数接受一个数组，内容为需要清除目录名。</p><pre><code class="javascript">const path = require(&#39;path&#39;)const htmlWebpackPlugin = require(&#39;html-webpack-plugin&#39;)const { CleanWebpackPlugin } = require(&#39;clean-webpack-plugin&#39;)module.exports = {  mode: &#39;development&#39;,  devtool: &#39;none&#39;,  entry: &#39;./src/main.js&#39;,  plugins: [    new htmlWebpackPlugin({      template: &#39;./src/pulicb/index.html&#39;    }),    new CleanWebpackPlugin() // clean  ],  output: {    filename: &#39;index.js&#39;,    path: path.resolve(__dirname, &#39;build&#39;)  }}</code></pre>]]></content>
       
       
       <categories>
@@ -33,7 +291,7 @@
       <link href="/loader/"/>
       <url>/loader/</url>
       
-        <content type="html"><![CDATA[<h3 id="file-loader"><a href="#file-loader" class="headerlink" title="file-loader"></a>file-loader</h3><p>file-loader用来对文件的打包操作。</p><h3 id="url-loader"><a href="#url-loader" class="headerlink" title="url-loader"></a>url-loader</h3><p>url-loader和file-loader非常相似。不同是url-loader可以把图片编译成base64，并且可以配置limit项，当图片文件大小不大于此项就把图片编译成base64。</p><pre><code class="javascript">&amp;#123;  loader: &#39;url-loader&#39;  options: &amp;#123;    limit: 102400 // 字节单位  &amp;#125;&amp;#125;</code></pre><h3 id="style-loader"><a href="#style-loader" class="headerlink" title="style-loader"></a>style-loader</h3><p>通常配合 <strong>css-loader</strong> 使用，style-loader会把css内容放进页面header的<code>style</code>元素中。</p><p><img src="http://img.phare.xyz/image-20200824133152392.png" alt="image-20200824133152392"></p><h3 id="css-loader"><a href="#css-loader" class="headerlink" title="css-loader"></a>css-loader</h3><p>配合style-loader使用，css-loader处理css文件各之间的依赖关系，最终合并成一段css。</p><p>css-loader一些常用配置项</p><table><thead><tr><th>选项</th><th>含义</th><th>参数</th></tr></thead><tbody><tr><td>importLoaders</td><td>处理sass之类的预编译文件时使用，主要用途是在处理css文件引入了其他sass文件时能够完全被sass-loader解析。通常sass-loader是执行循序第一的loader，当我们执行到css-loader时发现发现有引入的sass文件，设置此项可以使得引入的sass文件会重新走一遍loader流程。参数2表示重新走从css-loader开始往前两个loader。</td><td>2</td></tr><tr><td>modules</td><td>开启css模块化打包，配置此项可以使用非全局css</td><td>true</td></tr></tbody></table><h3 id="sass-loader"><a href="#sass-loader" class="headerlink" title="sass-loader"></a>sass-loader</h3><p>解析sass语法的loader，需要配合上面两个处理css的loader使用。</p><pre><code class="shell">npm install style-loader css-loader sass-loader node-sass -S</code></pre><p>注意，此loader需要配合node-sass插件使用。</p><h3 id="postcss-loader"><a href="#postcss-loader" class="headerlink" title="postcss-loader"></a>postcss-loader</h3><p>PostCSS 本身是一个功能比较单一的工具。它提供了一种方式用 JavaScript 代码来处理 CSS。它负责把 CSS 代码解析成抽象语法树结构（Abstract Syntax Tree，AST），再交由插件来进行处理。插件基于 CSS 代码的 AST 所能进行的操作是多种多样的，比如可以支持变量和混入（mixin），增加浏览器相关的声明前缀，或是把使用将来的 CSS 规范的样式规则转译（transpile）成当前的 CSS 规范支持的格式。从这个角度来说，PostCSS 的强大之处在于其不断发展的插件体系。目前 PostCSS 已经有 200 多个功能各异的插件。开发人员也可以根据项目的需要，开发出自己的 PostCSS 插件。</p><p>下面使用postcss-loader 搭配 <strong>autoprefixer</strong> 实现css3自动添加厂商前缀。</p><ol><li><p>安装<code>postcss-loader</code> 、<code>autoprefixer</code></p><pre><code class="shell">npm install postcss-loader autoprefixer -S</code></pre></li><li><p>项目根目录新建postcss.config.js</p><pre><code class="javascript">modules.export = &amp;#123;  plugins: [    require(&#39;autoprefixer&#39;)  ]&amp;#125;</code></pre><p>输入上面配置，最后别忘记在webpack配置文件中配置使用postcss-loader。</p></li></ol>]]></content>
+        <content type="html"><![CDATA[<h3 id="file-loader"><a href="#file-loader" class="headerlink" title="file-loader"></a>file-loader</h3><p>file-loader用来对文件的打包操作。</p><h3 id="url-loader"><a href="#url-loader" class="headerlink" title="url-loader"></a>url-loader</h3><p>url-loader和file-loader非常相似。不同是url-loader可以把图片编译成base64，并且可以配置limit项，当图片文件大小不大于此项就把图片编译成base64。</p><pre><code class="javascript">{  loader: &#39;url-loader&#39;  options: {    limit: 102400 // 字节单位  }}</code></pre><h3 id="style-loader"><a href="#style-loader" class="headerlink" title="style-loader"></a>style-loader</h3><p>通常配合 <strong>css-loader</strong> 使用，style-loader会把css内容放进页面header的<code>style</code>元素中。</p><p><img src="http://img.phare.xyz/image-20200824133152392.png" alt="image-20200824133152392"></p><h3 id="css-loader"><a href="#css-loader" class="headerlink" title="css-loader"></a>css-loader</h3><p>配合style-loader使用，css-loader处理css文件各之间的依赖关系，最终合并成一段css。</p><p>css-loader一些常用配置项</p><table><thead><tr><th>选项</th><th>含义</th><th>参数</th></tr></thead><tbody><tr><td>importLoaders</td><td>处理sass之类的预编译文件时使用，主要用途是在处理css文件引入了其他sass文件时能够完全被sass-loader解析。通常sass-loader是执行循序第一的loader，当我们执行到css-loader时发现发现有引入的sass文件，设置此项可以使得引入的sass文件会重新走一遍loader流程。参数2表示重新走从css-loader开始往前两个loader。</td><td>2</td></tr><tr><td>modules</td><td>开启css模块化打包，配置此项可以使用非全局css</td><td>true</td></tr></tbody></table><h3 id="sass-loader"><a href="#sass-loader" class="headerlink" title="sass-loader"></a>sass-loader</h3><p>解析sass语法的loader，需要配合上面两个处理css的loader使用。</p><pre><code class="shell">npm install style-loader css-loader sass-loader node-sass -S</code></pre><p>注意，此loader需要配合node-sass插件使用。</p><h3 id="postcss-loader"><a href="#postcss-loader" class="headerlink" title="postcss-loader"></a>postcss-loader</h3><p>PostCSS 本身是一个功能比较单一的工具。它提供了一种方式用 JavaScript 代码来处理 CSS。它负责把 CSS 代码解析成抽象语法树结构（Abstract Syntax Tree，AST），再交由插件来进行处理。插件基于 CSS 代码的 AST 所能进行的操作是多种多样的，比如可以支持变量和混入（mixin），增加浏览器相关的声明前缀，或是把使用将来的 CSS 规范的样式规则转译（transpile）成当前的 CSS 规范支持的格式。从这个角度来说，PostCSS 的强大之处在于其不断发展的插件体系。目前 PostCSS 已经有 200 多个功能各异的插件。开发人员也可以根据项目的需要，开发出自己的 PostCSS 插件。</p><p>下面使用postcss-loader 搭配 <strong>autoprefixer</strong> 实现css3自动添加厂商前缀。</p><ol><li><p>安装<code>postcss-loader</code> 、<code>autoprefixer</code></p><pre><code class="shell">npm install postcss-loader autoprefixer -S</code></pre></li><li><p>项目根目录新建postcss.config.js</p><pre><code class="javascript">modules.export = {  plugins: [    require(&#39;autoprefixer&#39;)  ]}</code></pre><p>输入上面配置，最后别忘记在webpack配置文件中配置使用postcss-loader。</p></li></ol>]]></content>
       
       
       <categories>
@@ -58,7 +316,7 @@
       <link href="/%E4%BD%BF%E7%94%A8uniapp%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/"/>
       <url>/%E4%BD%BF%E7%94%A8uniapp%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</url>
       
-        <content type="html"><![CDATA[<h4 id="动态style没法解析"><a href="#动态style没法解析" class="headerlink" title="动态style没法解析"></a>动态style没法解析</h4><p><img src="http://img.phare.xyz/image-20200817124711705.png" alt="动态style没法解析"></p><pre><code class="javascript">&lt;view class=&quot;container&quot; :style=&quot;temp&quot;&gt;temp = &amp;#123;  width: &#39;777px&#39;,  height: &#39;500px&#39;&amp;#125;</code></pre><p>uniapp不会解析这种形式的对象，可以直接把style写在style属性里或者或像下面这样</p><pre><code class="javascript">&lt;view class=&quot;container&quot; :style=&quot;[temp]&quot;&gt;&lt;view class=&quot;container&quot; :style=&quot;&amp;#123;width: 330px&amp;#125;&quot;&gt;temp = &amp;#123;  width: &#39;777px&#39;,  height: &#39;500px&#39;&amp;#125;</code></pre>]]></content>
+        <content type="html"><![CDATA[<h4 id="动态style没法解析"><a href="#动态style没法解析" class="headerlink" title="动态style没法解析"></a>动态style没法解析</h4><p><img src="http://img.phare.xyz/image-20200817124711705.png" alt="动态style没法解析"></p><pre><code class="javascript">&lt;view class=&quot;container&quot; :style=&quot;temp&quot;&gt;temp = {  width: &#39;777px&#39;,  height: &#39;500px&#39;}</code></pre><p>uniapp不会解析这种形式的对象，可以直接把style写在style属性里或者或像下面这样</p><pre><code class="javascript">&lt;view class=&quot;container&quot; :style=&quot;[temp]&quot;&gt;&lt;view class=&quot;container&quot; :style=&quot;{width: 330px}&quot;&gt;temp = {  width: &#39;777px&#39;,  height: &#39;500px&#39;}</code></pre>]]></content>
       
       
       <categories>
@@ -83,7 +341,7 @@
       <link href="/%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%90%88%E9%9B%86/"/>
       <url>/%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%90%88%E9%9B%86/</url>
       
-        <content type="html"><![CDATA[<h4 id="concurrently"><a href="#concurrently" class="headerlink" title="concurrently"></a>concurrently</h4><p>当我们需要同时启动多个服务并且想要服务按循序跑起时可以用 <strong>concurrently</strong></p><pre><code class="shell">npm install concurrently -S</code></pre><p>使用方法：</p><p>concurrently service servicce</p><p>“concurrently \“nodemon –watch vue.config.js –exec npm run serve\“ \“electron .\“”</p><p>需要注意的是每端命令都需要使用双引号包起来并且需要使用 \ 转义双引号</p><h4 id="nodemon"><a href="#nodemon" class="headerlink" title="nodemon"></a>nodemon</h4><p>nodejs自动重启工具</p><p>这个应该就不用多说了，有用过nodejs开发项目肯定都会很烦每次修改后都要重启服务，用了这个插件后可以让我们成为编程语言的主人（狗头）。</p><pre><code class="shell">npm install nodemon -S</code></pre><p>使用也很简单，nodemon app.js 就完事</p>]]></content>
+        <content type="html"><![CDATA[<h4 id="concurrently"><a href="#concurrently" class="headerlink" title="concurrently"></a>concurrently</h4><p>当我们需要同时启动多个服务并且想要服务按循序跑起时可以用 <strong>concurrently</strong></p><pre><code class="shell">npm install concurrently -S</code></pre><p>使用方法：</p><p>concurrently service servicce</p><p>“concurrently \“nodemon –watch vue.config.js –exec npm run serve\“ \“electron .\“”</p><p>需要注意的是每端命令都需要使用双引号包起来并且需要使用 \ 转义双引号</p><h4 id="nodemon"><a href="#nodemon" class="headerlink" title="nodemon"></a>nodemon</h4><p>nodejs自动重启工具</p><p>这个应该就不用多说了，有用过nodejs开发项目肯定都会很烦每次修改后都要重启服务，用了这个插件后可以让我们成为编程语言的主人（狗头）。</p><pre><code class="shell">npm install nodemon -S</code></pre><p>使用也很简单，nodemon app.js 就完事。</p><h3 id="ts-node"><a href="#ts-node" class="headerlink" title="ts-node"></a>ts-node</h3><p>调试ts的工具，通常我们使用写完ts需要先编译成xxx.js再node xxx.js，用此工具可免去一个步骤。</p><pre><code class="shell">npm install ts-node -g    </code></pre><p>使用同样很简单，ts-node xxx.ts。</p>]]></content>
       
       
       <categories>
@@ -133,7 +391,7 @@
       <link href="/git/"/>
       <url>/git/</url>
       
-        <content type="html"><![CDATA[<h3 id="基础操作"><a href="#基础操作" class="headerlink" title="基础操作"></a>基础操作</h3><ol><li><p>git add .</p><p>. 把所有改动文件提交到暂存区。另外可以直接指定某个文件夹或者文件提交</p></li><li><p>git commit -m ‘备注’</p><p>最常见的用法，把暂存区的文件提交到本地版本库。-m 参数代表后面输入提交备注，如果不加 -m 会进入vim让你输入备注</p></li><li><p>git push origin master</p><p>推送本地代码到远程仓库 <strong>origin</strong> 的 <strong>master</strong> 分支</p></li><li><p>git pull origin master</p><p>拉取远程仓库 <strong>origin</strong> 的 <strong>master</strong> 分支的代码到本地git log</p></li></ol><h3 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h3><ol><li><p>git remote</p><p>查看所有远程分支</p></li><li><p>git remote add origin url</p><p>添加远程仓库地址为 <strong>url</strong> 并命名为 <strong>origin</strong></p></li><li><p>git remote rm origin</p><p>删除 <strong>origin</strong> 仓库</p></li><li><p>git remote rename origin dev</p><p>远程仓库 <strong>origin</strong> 重命名为 <strong>dev</strong></p></li></ol><h3 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h3><ol><li><p>git branch</p><p>列出本地分支</p></li><li><p>git branch dev</p><p>创建 <strong>dev</strong> 本地分支</p></li><li><p>git checkout master</p><p>切换到 <strong>master</strong> 分支</p></li><li><p>git merge dev</p><p>当前分支合并 <strong>dev</strong> 分支</p></li><li><p>git branch -d dev</p><p>删除 <strong>dev</strong> 分支</p></li></ol><h3 id="版本回滚"><a href="#版本回滚" class="headerlink" title="版本回滚"></a>版本回滚</h3><ol><li><p>git log</p><p><img src="http://img.phare.xyz/image-20200817123052864.png" alt="git log"></p><p>使用这个命令可以查看所有提交记录，commit 后面的 hash 码作为指定回滚版本的凭证</p></li><li><p>git reset –hard <code>commitId</code></p><p>回滚至指定版本</p></li><li><p>git reset HEAD</p><p>回滚至上一个版本</p></li><li><p>git reset HEAD~3</p><p>回滚至前3次提交</p></li><li><p>git reset –hard HEAD~1</p><p><strong>撤销commit，并且将commit下的代码也撤销掉</strong></p></li></ol><p><strong>注：使用了 –hard 之后，最新的commit命令下修改的内容将会完全被撤销，慎用。</strong></p><h3 id="冲突处理"><a href="#冲突处理" class="headerlink" title="冲突处理"></a>冲突处理</h3><ol><li><p>git stash</p><p>将当前改动文件提交到暂存区</p></li><li><p>git pull</p><p>拉取当前分支最新代码</p></li><li><p>git stash pop</p><p>合并冲突文件</p></li></ol><p>接下来需要手动处理冲突文件，建议使用VSCode处理。</p><h3 id="标签管理"><a href="#标签管理" class="headerlink" title="标签管理"></a>标签管理</h3><ol><li><p>git tag</p><p>查看所有标签</p></li><li><p>git tag -l [标签]</p><p>查看某个版本的标签</p></li><li><p>git show [标签]</p><p>查看标签详情，可以看到commit内容</p></li><li><p>git push origin [标签]</p><p>推送标签到远程仓库</p></li><li><p>git tag -d [标签]</p><p>删除本地标签</p></li><li><p>git push origin :refs/tags/[标签]</p><p>删除远程标签</p></li></ol><hr><p>更多命令更新中…</p>]]></content>
+        <content type="html"><![CDATA[<h3 id="基础操作"><a href="#基础操作" class="headerlink" title="基础操作"></a>基础操作</h3><ol><li><p>git add .</p><p>. 把所有改动文件提交到暂存区。另外可以直接指定某个文件夹或者文件提交</p></li><li><p>git commit -m ‘备注’</p><p>最常见的用法，把暂存区的文件提交到本地版本库。-m 参数代表后面输入提交备注，如果不加 -m 会进入vim让你输入备注</p></li><li><p>git push origin master</p><p>推送本地代码到远程仓库 <strong>origin</strong> 的 <strong>master</strong> 分支</p></li><li><p>git pull origin master</p><p>拉取远程仓库 <strong>origin</strong> 的 <strong>master</strong> 分支的代码到本地git log</p></li></ol><h3 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h3><ol><li><p>git remote</p><p>查看所有远程分支</p></li><li><p>git remote add origin url</p><p>添加远程仓库地址为 <strong>url</strong> 并命名为 <strong>origin</strong></p></li><li><p>git remote rm origin</p><p>删除 <strong>origin</strong> 仓库</p></li><li><p>git remote rename origin dev</p><p>远程仓库 <strong>origin</strong> 重命名为 <strong>dev</strong></p></li></ol><h3 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h3><ol><li><p>git branch</p><p>列出本地分支</p></li><li><p>git branch dev</p><p>创建 <strong>dev</strong> 本地分支</p></li><li><p>git checkout master</p><p>切换到 <strong>master</strong> 分支。</p><p>git checkout 还有其他妙用，我们可以用它来回滚（切换）指定文件到特定版本。先 <code>git log &lt;文件路径&gt;</code> 拿到文件的版本 号，然后使用 <code>git checkout &lt;版本号&gt; &lt;文件路径&gt;</code>即可</p></li><li><p>git merge dev</p><p>当前分支合并 <strong>dev</strong> 分支</p></li><li><p>git branch -d dev</p><p>删除 <strong>dev</strong> 分支</p></li></ol><h3 id="版本回滚"><a href="#版本回滚" class="headerlink" title="版本回滚"></a>版本回滚</h3><ol><li><p>git log</p><p><img src="http://img.phare.xyz/image-20200817123052864.png" alt="git log"></p><p>使用这个命令可以查看所有提交记录，commit 后面的 hash 码作为指定回滚版本的凭证。</p><p>可以使用<code>git log --pretty=oneline path</code>查看该文件的提交记录，path作为文件路径传入。</p><p><img src="http://img.phare.xyz/image-20200907092321708.png" alt="image-20200907092321708"></p></li><li><p>git reset –hard <code>commitId</code></p><p>回滚至指定版本</p></li><li><p>git reset HEAD</p><p>回滚至上一个版本</p></li><li><p>git reset HEAD~3</p><p>回滚至前3次提交</p></li><li><p>git reset –hard HEAD~1</p><p><strong>撤销commit，并且将commit下的代码也撤销掉</strong></p></li><li><p>git reset HEAD  文件路径</p><p>指定回滚对某个文件的提交。</p></li></ol><p><strong>注：使用了 –hard 之后，最新的commit命令下修改的内容将会完全被撤销，慎用。</strong></p><h3 id="冲突处理"><a href="#冲突处理" class="headerlink" title="冲突处理"></a>冲突处理</h3><ol><li><p>git stash</p><p>将当前改动文件提交到暂存区</p></li><li><p>git pull</p><p>拉取当前分支最新代码</p></li><li><p>git stash pop</p><p>合并冲突文件</p></li></ol><p>接下来需要手动处理冲突文件，建议使用VSCode处理。</p><h3 id="标签管理"><a href="#标签管理" class="headerlink" title="标签管理"></a>标签管理</h3><ol><li><p>git tag</p><p>查看所有标签</p></li><li><p>git tag -l [标签]</p><p>查看某个版本的标签</p></li><li><p>git show [标签]</p><p>查看标签详情，可以看到commit内容</p></li><li><p>git push origin [标签]</p><p>推送标签到远程仓库</p></li><li><p>git tag -d [标签]</p><p>删除本地标签</p></li><li><p>git push origin :refs/tags/[标签]</p><p>删除远程标签</p></li></ol><h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ol><li><p>git show</p><p>查看当前改动文件的记录。</p><p><img src="http://img.phare.xyz/image-20200907092748992.png" alt="image-20200907092748992"></p><p>也可以指定版本号查看， 使用<code>git log</code>查看版本号，然后<code>git show &lt;版本号&gt;</code>。</p><p>还可以指定版本号指定文件查看，操作流程和上面一致，但<code>git show &lt;版本号&gt; &lt;文件路径&gt;</code>。</p></li><li></li></ol><hr><p>更多命令更新中…</p>]]></content>
       
       
       <categories>
@@ -158,7 +416,7 @@
       <link href="/webpack%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/"/>
       <url>/webpack%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/</url>
       
-        <content type="html"><![CDATA[<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><pre><code class="shell">npm install webpack webpack-cli -g</code></pre><p>默认安装最新版，也可以用下面命令指定安装版本。</p><pre><code class="shell">npm install webpack@3.x.x webpack-cli -g</code></pre><p>这种方式是全局安装，不建议使用这种方式。敞若某个项目使用了比当前版本低的webpack将无法运行，所以最好是局部安装，如果不能保证项目所需的webpack版本一致的话。</p><h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><p><strong>基于webpack4.x编写</strong></p><p>webpack默认使用自带配置文件，若项目路径内出现用户自定义的配置文件则使用用户自定义的配置文件。</p><p>新建 webpack.config.js 文件。注意，webpack默认以此文件名文件为配置文件，若我们需要以其他文件名为配置文件，可以使用 –config filename 指令控制</p><p>基本的webpack配置如下</p><pre><code class="js">const path = require(&#39;path&#39;)module.exports = &amp;#123;  mode: &#39;production&#39;  entry: &#39;./index.js&#39;,  output: &amp;#123;    filename: &#39;main.js&#39;    path: path.resolve(__dirname, &#39;build&#39;)  &amp;#125;&amp;#125;</code></pre><table><thead><tr><th>参数</th><th align="left">含义</th></tr></thead><tbody><tr><td>mode</td><td align="left">当前打包模式，<strong>production</strong> 或 <strong>development</strong>。分别代表生产和开发，区别是生产打包会压缩代码，开发则不会</td></tr><tr><td>entry</td><td align="left">打包目标配置</td></tr><tr><td>output</td><td align="left">打包输出配置</td></tr></tbody></table><p>输出路径不能使用相对路径，需要引入node path模块合并打包文件夹。</p><p>更多配置可参考 <a href="https://www.webpackjs.com/concepts/">webpack中文网</a></p><h3 id="loader"><a href="#loader" class="headerlink" title="loader"></a>loader</h3><p>webpack自身只支持对js文件的打包，配置<strong>loader</strong>可以让webpack支持我们想要打包的文件类型。</p><p><strong>注意：loader是有执行循序的，loader的执行循序是从最后一个到第一个，使用时一定要注意循序。</strong></p><p>下面以图片打包为例：</p><ol><li>下载file-loader模块</li></ol><pre><code class="shell">    npm install file-loader -S</code></pre><ol start="2"><li>配置loader使用</li></ol><pre><code class="javascript">const path = require(&#39;path&#39;)module.exports = &amp;#123;  mode: &#39;production&#39;  entry: &#39;./index.js&#39;,  module: &amp;#123;      rules: [          &amp;#123;              test: /\.jpg$/,              use: &amp;#123;                  loader: &#39;file-loader&#39;,                  options: &amp;#123;                      name: &#39;[name].[ext]&#39;,                      outputPath: &#39;imgs/&#39;                    &amp;#125;                &amp;#125;            &amp;#125;      ]    &amp;#125;,  output: &amp;#123;    filename: &#39;main.js&#39;    path: path.resolve(__dirname, &#39;build&#39;)  &amp;#125;&amp;#125;</code></pre><table><thead><tr><th>参数</th><th>含义</th></tr></thead><tbody><tr><td>rules</td><td>打包规则</td></tr><tr><td>test</td><td>正则校验配对文件</td></tr><tr><td>use</td><td>匹配上的文件使用这种配置进行打包</td></tr></tbody></table><p>options是loader的配置项，详情可以查看对应loader提供的配置项。</p><p>上边options配置意思是打包后的文件名保持原本的名称和扩展名 并且输出路径为 <strong>outputPath</strong></p><h3 id="plugins"><a href="#plugins" class="headerlink" title="plugins"></a>plugins</h3><p>plugins是webpack的插件</p><p>配置plugins使用，在webpack配置文件内引入插件，然后在配置项中使用插件。</p><pre><code class="javascript">import htmlWebpackPlugin from &#39;xxx&#39;plugins: [    new htmlWebpackPlugin()]</code></pre>]]></content>
+        <content type="html"><![CDATA[<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><pre><code class="shell">npm install webpack webpack-cli -g</code></pre><p>默认安装最新版，也可以用下面命令指定安装版本。</p><pre><code class="shell">npm install webpack@3.x.x webpack-cli -g</code></pre><p>这种方式是全局安装，不建议使用这种方式。敞若某个项目使用了比当前版本低的webpack将无法运行，所以最好是局部安装，如果不能保证项目所需的webpack版本一致的话。</p><h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p><strong>基于webpack4.x编写</strong></p><p>webpack默认使用自带配置文件，若项目路径内出现用户自定义的配置文件则使用用户自定义的配置文件。</p><p>新建 webpack.config.js 文件。注意，webpack默认以此文件名文件为配置文件，若我们需要以其他文件名为配置文件，可以使用 –config filename 指令控制</p><p>基本的webpack配置如下</p><pre><code class="js">const path = require(&#39;path&#39;)module.exports = {  mode: &#39;production&#39;  entry: &#39;./index.js&#39;,  output: {    filename: &#39;main.js&#39;    path: path.resolve(__dirname, &#39;build&#39;)  }}</code></pre><table><thead><tr><th>参数</th><th align="left">含义</th></tr></thead><tbody><tr><td>mode</td><td align="left">当前打包模式，<strong>production</strong> 或 <strong>development</strong>。分别代表生产和开发，区别是生产打包会压缩代码，开发则不会</td></tr><tr><td>entry</td><td align="left">打包目标配置</td></tr><tr><td>output</td><td align="left">打包输出配置</td></tr></tbody></table><p>输出路径不能使用相对路径，需要引入node path模块合并打包文件夹。</p><p>更多配置可参考 <a href="https://www.webpackjs.com/concepts/" target="_blank" rel="noopener">webpack中文网</a></p><h3 id="mode"><a href="#mode" class="headerlink" title="mode"></a>mode</h3><p>webpack打包模式，使用对应webpack内置优化。打包模式可以通过webpack-cli传递给webpack。</p><p>可以设置npm scripts使得webpack-cli获取打包模式命令。</p><pre><code class="json">{  &quot;devDependencies&quot;: {},  &quot;dependencies&quot;: {},  &quot;scripts&quot;: {    &quot;start&quot;: &quot;npx webpack --mode=development&quot;, // 测试模式打包    &quot;build&quot;: &quot;npx webpack --mode=production&quot;    // 生产模式打包  }}</code></pre><h4 id="entry"><a href="#entry" class="headerlink" title="entry"></a>entry</h4><p>打包入口配置。接受字符串或对象。</p><h4 id="output"><a href="#output" class="headerlink" title="output"></a>output</h4><p>打包出口配置。</p><p>可进行配置的参数</p><table><thead><tr><th>选项</th><th>说明</th></tr></thead><tbody><tr><td>publicPath</td><td>配合html-webpack-plugin使用可以实现在生成的index.html增加前缀url</td></tr><tr><td>filename</td><td>打包输出文件名，可以使用占位符代替，如’[name]’、’[hash]’，注意如果打包入口文件为两个，这里就不能写死文件名</td></tr><tr><td>path</td><td></td></tr></tbody></table><h3 id="loader"><a href="#loader" class="headerlink" title="loader"></a>loader</h3><p>webpack自身只支持对js文件的打包，配置<strong>loader</strong>可以让webpack支持我们想要打包的文件类型。</p><p><strong>注意：loader是有执行循序的，loader的执行循序是从最后一个到第一个，使用时一定要注意循序。</strong></p><p>下面以图片打包为例：</p><ol><li>下载file-loader模块</li></ol><pre><code class="shell">    npm install file-loader -S</code></pre><ol start="2"><li>配置loader使用</li></ol><pre><code class="javascript">const path = require(&#39;path&#39;)module.exports = {  mode: &#39;production&#39;  entry: &#39;./index.js&#39;,  module: {      rules: [          {              test: /\.jpg$/,              use: {                  loader: &#39;file-loader&#39;,                  options: {                      name: &#39;[name].[ext]&#39;,                      outputPath: &#39;imgs/&#39;                    }                },        exclude: /node_modules/            }      ]    },  output: {    filename: &#39;main.js&#39;    path: path.resolve(__dirname, &#39;build&#39;)  }}</code></pre><table><thead><tr><th>参数</th><th>含义</th></tr></thead><tbody><tr><td>rules</td><td>打包规则</td></tr><tr><td>test</td><td>正则校验配对文件</td></tr><tr><td>use</td><td>匹配上的文件使用这种配置进行打包</td></tr></tbody></table><p>options是loader的配置项，详情可以查看对应loader提供的配置项。</p><p>可以设置exclude来屏蔽某些路径的文件打包。</p><p>上边options配置意思是打包后的文件名保持原本的名称和扩展名 并且输出路径为 <strong>outputPath</strong></p><h3 id="plugins"><a href="#plugins" class="headerlink" title="plugins"></a>plugins</h3><p>plugins是webpack的插件</p><p>配置plugins使用，在webpack配置文件内引入插件，然后在配置项中使用插件。</p><pre><code class="javascript">import htmlWebpackPlugin from &#39;xxx&#39;plugins: [    new htmlWebpackPlugin()]</code></pre><h3 id="source-map"><a href="#source-map" class="headerlink" title="source-map"></a>source-map</h3><p>source-map是打包后文件与源文件的映射关系。当我们的代码在打包后执行报错时通常报错信息只会定位到打包后文件中的错误位置。如果我们想要知道源文件对应的报错位置，就需要用到source-map。</p><p>默认配置使用<strong>eval</strong>模式。</p><pre><code class="javascript">const path = require(&#39;path&#39;);module.exports = {  devtool: &#39;source-map&#39;, // SourceMap  entry: &#39;./src/index.js&#39;,  // 入口文件  output: {    filename: &#39;bundle.js&#39;,  // 文件名    path: path.resolve(__dirname, &#39;dist&#39;)  // 文件夹  }}</code></pre><h3 id="resolve"><a href="#resolve" class="headerlink" title="resolve"></a>resolve</h3><p>resolve配置webpack打包从入口文件开始找出所有依赖模块，resolve配置webpack如何寻找模块对应文件。</p><ol><li><p>alias</p><p>可以给路径起别名。比如vue-cli项目中的@指向/src。</p><pre><code class="javascript">alias: {  static$: path.resolve(__dirname, &#39;src/static&#39;)}import avatarDefault from &#39;static$/avatar_default.png&#39;</code></pre></li></ol><h3 id="devServer"><a href="#devServer" class="headerlink" title="devServer"></a>devServer</h3><p>顾名思义就是开发服务器。我们使用webpack打包文件时每次文件有更新都需要重新执行 webpack 命令重新打包文件并刷新页面才能看到最新的效果。这种做法效率太低，我们可以配置webpack让webpack帮我们做这些事情，主要有两种方法。</p><ol><li><p>npm scripts 配置 –watch命令</p><pre><code class="json">{    &quot;scripts&quot;: {    &quot;start&quot;: &quot;webpack --watch&quot; // 设置监听  }}</code></pre><p>通过上面配置，webpack将监听打包文件的改动，文件改动时自动打包，这时候我们改动完文件只需要回去页面上刷新页面就可以看到最新的页面。</p></li><li><p>使用 webpack-dev-server</p><p>使用webpack-dev-server不仅可以帮助我们自动打包改动文件，还能自动帮我们刷新浏览器并且提供一些其他配置项。</p><ol><li>安装插件</li></ol><pre><code class="shell">npm install webpack-dev-server -D</code></pre><ol start="2"><li>配置使用</li></ol><pre><code class="javascript">// webpack.config.jsmodule.export = {  devServer: {    contentBase: &#39;./dist&#39;,    open: true,    proxy: {      &quot;/api&quot;: &quot;http://test.com/api&quot;    }  }}</code></pre></li></ol><p>常用配置项说明：</p><ul><li><p>contentBase</p><p>监听的文件夹</p></li><li><p>open</p><p>是否在启动完后自动打开浏览器并指向该页面</p></li><li><p>proxy</p><p>请求代理，用于解决请求跨域限制问题，react、vue脚手架就是用这种方法</p></li><li><p>port</p><p>配置启动端口号</p></li><li><p>hot</p><p>热重载功能。</p></li><li><p>hotOnly</p><p>是否不管热重载功能有没开启或使用成功都不要刷新页面</p></li></ul><p>npx webpack-dev-server 即可启动静态服务器。另外使用了dev-server之后项目目录不会产生打包的文件，那是因为dev-server把打包的文件放到内存去了，因为这样在做替换时效率更高</p><p>更多配置项可以访问<a href="https://webpack.js.org/configuration/dev-server/" target="_blank" rel="noopener">devServer</a></p><p>扩展知识：</p><blockquote><p><a href="%5B%E4%BD%BF%E7%94%A8webpack-dev-middleware%E6%89%8B%E5%86%99%E4%B8%80%E4%B8%AAdevServer/%5D(http://localhost:4000/%E4%BD%BF%E7%94%A8webpack-dev-middleware%E6%89%8B%E5%86%99%E4%B8%80%E4%B8%AAdevServer)">使用webpack-dev-middleware手写一个devServer</a></p></blockquote>]]></content>
       
       
       <categories>

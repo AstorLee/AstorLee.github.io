@@ -29,7 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.0.0"></head>
+<meta name="generator" content="Hexo 4.2.1"></head>
 
 
 <body>
@@ -480,7 +480,10 @@
 <h4 id="nodemon"><a href="#nodemon" class="headerlink" title="nodemon"></a>nodemon</h4><p>nodejs自动重启工具</p>
 <p>这个应该就不用多说了，有用过nodejs开发项目肯定都会很烦每次修改后都要重启服务，用了这个插件后可以让我们成为编程语言的主人（狗头）。</p>
 <pre><code class="shell">npm install nodemon -S</code></pre>
-<p>使用也很简单，nodemon app.js 就完事</p>
+<p>使用也很简单，nodemon app.js 就完事。</p>
+<h3 id="ts-node"><a href="#ts-node" class="headerlink" title="ts-node"></a>ts-node</h3><p>调试ts的工具，通常我们使用写完ts需要先编译成xxx.js再node xxx.js，用此工具可免去一个步骤。</p>
+<pre><code class="shell">npm install ts-node -g    </code></pre>
+<p>使用同样很简单，ts-node xxx.ts。</p>
 
             </div>
             <hr/>
@@ -606,8 +609,9 @@
                             动态style没法解析
 &lt;view class=&quot;container&quot; :style=&quot;temp&quot;&gt;
 
-temp = &amp;#123;
-  width: &#39;777px&#39;
+temp = {
+  width: &#39;777px&#39;,
+  heigh
                         
                     </div>
                     <div class="publish-info">
